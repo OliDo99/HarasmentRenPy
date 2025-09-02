@@ -3,9 +3,9 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
-define Woman = Character("Eva", color="#c8ffc8")
-define Man = Character("Boy", color="#ff8818")
-define Man2 = Character("Boy", color="#28ff10")
+define s = Character("Silvie", color="#c8ffc8")
+define m = Character("Boyle", color="#ff8818")
+define pov = Character("Chad", color="#28ff10")
 
 
 # The game starts here.
@@ -26,15 +26,40 @@ label start:
     show eva body at right
 
     # These display lines of dialogue.
-    Man "Hello sweetheart, you look so good today!"
+    m "Hello sweetheart, you look so good today!"
 
-    Woman "Hello?"
+    s "Hello?"
 
-    Man "Dont be like that baby"
+    m "Dont be like that baby"
 
-    # This ends the game.
+    menu:
+        "Intervene":
+            jump intervene_route
+        "Ignore":
+            jump ignore_route
 
-    return
 
+
+label intervene_route:
     
+    scene bg street night
+    with fade
 
+    "+10 social credit score"
+    show man body
+    pov "Hey! Leave her alone!"
+    m "Mind your own business!"
+    pov "No! You shouldnt be harassing people like that!"
+    m "What?? I didn't know that"
+    jump end_chapter
+
+label ignore_route:
+    "-100 social credit score"
+    scene bg street night
+    with fade
+    "He rapes her"
+    jump end_chapter
+
+label end_chapter:
+    "The End"
+    return
