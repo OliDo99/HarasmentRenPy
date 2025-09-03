@@ -113,13 +113,12 @@ label fight_route:
 
     scene bg black
     centered "Violence is never the answer, you should always try to de-escalate the situation first"
-    
+
     jump second_chapter
 
 label ignore_route:
     "-10 social credit score"
     scene bg street night
-    with fade
     
     "You left"
     "You never saw her again"
