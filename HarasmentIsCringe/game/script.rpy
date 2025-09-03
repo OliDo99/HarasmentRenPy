@@ -29,6 +29,7 @@ label start:
     python:
         povname = renpy.input("Before we start, what is your name?", length=32)
         povname = povname.strip()
+        player_score = 0
 
     # This shows a character sprite. A placeholder is used, but you can
     # replace it by adding a file named "eileen happy.png" to the images
@@ -77,6 +78,8 @@ label intervene_route:
     menu:
         "Talk to him":
             jump talk_route
+        "Pretend you know Silvie":
+            jump silvie_route
         "Punch him":
             jump fight_route
 
@@ -106,7 +109,7 @@ label fight_route:
     jump second_chapter
 
 label ignore_route:
-    "-100 social credit score"
+    "-10 social credit score"
     scene bg street night
     with fade
     
@@ -114,6 +117,11 @@ label ignore_route:
     "You never saw her again"
 
     jump second_chapter
+
+label silvie_route:
+    scene bg street night
+    jump second_chapter
+
 
 label second_chapter:
     scene bg station
@@ -131,8 +139,12 @@ label second_chapter:
     show man body at left
 
     menu:
+        "Everything alright?":
+            jump concered_route2
         "Intervene":
             jump intervene_route2
+        "Explain OV":
+            jump explain_route2
         "Ignore":
             jump ignore_route2
 
@@ -157,6 +169,22 @@ label ignore_route2:
 
     jump third_chapter
 
+label concerned_route2:
+    scene bg train
+    show man body at left
+    show Silvie
+    pov "Is everything alright here?"
+    s "Yeah I was just showing this man how to use OV"
+
+    jump third_chapter
+
+label explain_route2:
+    scene bg train
+    show man asking at left
+    show silvie body at right
+    pov "I can show you, you just tap it on that scanner"
+    m "Thanks, you are a life saver"
+
 
 
 label third_chapter:
@@ -170,7 +198,7 @@ label third_chapter:
     show man body at left
     l "..."
     show man talking at left
-    m "Damn, don’t ignore me! I’m just giving you a compliment!" 
+    m "Damn, don't ignore me! I'm just giving you a compliment!" 
     show laura fuck off
 
     l "I’m not interested. Please leave me alone." 
@@ -186,11 +214,18 @@ label third_chapter:
             jump ignore_route3
 
 label intervene_route3:
-    pov "Hey, she said leave her alone. Back off, man." 
+    pov "Hey man, she's not interested!"
     "+10 social credit"
     show man whatever
     m "Whatever. Can’t even say hi to people these days." 
-    jump end_chapter
+
+    menu:
+        "Calm approach":
+            jump calm_intervene_route3
+        "Be sarcastic":
+            jump sarcastic_intervene_route3
+        "Ignore":
+            jump end_chapter
 
 
     #Person A walks away while Person B talking to bystander 
@@ -200,6 +235,18 @@ label ignore_route3:
     show laura body flip at right
     "boob squeeze"
     jump end_chapter
+
+label calm_intervene_route3:
+    pov "This isn’t saying hi, it's harassment. Walk away, or I'll get security."
+    m "Tch. Whatever."
+    jump end_chapter
+
+label sarcastic_intervene_route3:
+    pov "Oh wow, thanks for blessing us with your unsolicited opinion. Shall we share it with your mother?"
+    m "You chicks are all the same. Whatever."
+    jump end_chapter
+
+    
 
 
 label end_chapter:
