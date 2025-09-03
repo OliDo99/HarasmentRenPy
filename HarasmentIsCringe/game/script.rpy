@@ -223,13 +223,7 @@ label third_chapter:
 label embarrassing_route3:
     pov "Mate, this isn't working. Try therapy next time."
     m "Fuck you, man. All chicks are the same anyway"
-    menu:
-        "Calm approach":
-            jump calm_intervene_route3
-        "Be sarcastic":
-            jump sarcastic_intervene_route3
-        "Ignore":
-            jump end_chapter
+    jump end_chapter
 
 label intervene_route3:
     pov "Hey man, she's not interested!"
