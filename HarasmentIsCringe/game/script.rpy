@@ -119,7 +119,12 @@ label ignore_route:
     jump second_chapter
 
 label silvie_route:
-    scene bg street night
+    scene bg street
+    show silvie body at right
+    pov "Hey! There you are, I've been looking all over for you."
+    pov "Are you ready to go?"
+    s "uhhh..."
+    s "Yeah, thanks lets go"
     jump second_chapter
 
 
@@ -208,10 +213,23 @@ label third_chapter:
     show man body
 
     menu:
+        "Make fun of him":
+            jump embarrassing_route3
         "Intervene":
             jump intervene_route3
         "Ignore":
             jump ignore_route3
+
+label embarrassing_route3:
+    pov "Mate, this isn't working. Try therapy next time."
+    m "Fuck you, man. All chicks are the same anyway"
+    menu:
+        "Calm approach":
+            jump calm_intervene_route3
+        "Be sarcastic":
+            jump sarcastic_intervene_route3
+        "Ignore":
+            jump end_chapter
 
 label intervene_route3:
     pov "Hey man, she's not interested!"
@@ -233,7 +251,7 @@ label ignore_route3:
     scene bg street
     show man groping
     show laura body flip at right
-    "boob squeeze"
+    l "Get away from me!"
     jump end_chapter
 
 label calm_intervene_route3:
@@ -243,7 +261,7 @@ label calm_intervene_route3:
 
 label sarcastic_intervene_route3:
     pov "Oh wow, thanks for blessing us with your unsolicited opinion. Shall we share it with your mother?"
-    m "You chicks are all the same. Whatever."
+    m "Whatever. You're so boring"
     jump end_chapter
 
     
