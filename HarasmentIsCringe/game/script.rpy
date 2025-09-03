@@ -6,6 +6,7 @@
 define s = Character("Silvie", color="#c8ffc8")
 define l = Character("Laura", color="#8e4efe")
 define m = Character("Boyle", color="#ff8818")
+define cop = Character("Police", color="#ff0000c1")
 define pov = Character("[povname]", color="#28ff10")
 
 
@@ -26,16 +27,12 @@ label start:
     
 
     python:
-        povname = renpy.input("Bfore we start, what is your name?", length=32)
+        povname = renpy.input("Before we start, what is your name?", length=32)
         povname = povname.strip()
 
     # This shows a character sprite. A placeholder is used, but you can
     # replace it by adding a file named "eileen happy.png" to the images
     # directory.
-
-    
-
-    
 
 
 label first_chapter:
@@ -99,10 +96,13 @@ label fight_route:
     "You punch him in the face"
     show man grabbing
     m "Oof!"
+    show man knife
     "He pulls out a knife"
     
     m "Now you've done it!"
-    "Cops arrive and arrest both of you"
+    show cop body at left
+    cop "Drop the knife!"
+    "The cops arrest both of you"
     jump second_chapter
 
 label ignore_route:
