@@ -142,8 +142,10 @@ label ignore_route:
 
 label silvie_route:
     show man body at left
+    show silvie body at right
     pov "Hey! There you are, I've been looking all over for you."
     pov "Are you ready to go?"
+    show silvie answering at right
     s "uhhh..."
     s "Yeah, thanks lets go"
 
