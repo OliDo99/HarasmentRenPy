@@ -129,8 +129,7 @@ label ignore_route:
     jump second_chapter
 
 label silvie_route:
-    scene bg street
-    show silvie body at right
+    show man body at left
     pov "Hey! There you are, I've been looking all over for you."
     pov "Are you ready to go?"
     s "uhhh..."
