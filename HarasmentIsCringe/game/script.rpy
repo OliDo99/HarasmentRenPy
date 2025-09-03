@@ -18,16 +18,28 @@ label start:
     # file (named either "bg room.png" or "bg room.jpg") to the
     # images directory to show it.
 
-    scene bg street
+    scene bg classroom
+
+    "Welcome to our Pressure Cooker game about street harassment!"
+    "In this game, you will be presented with different scenarios where you can choose to either to intervene or ignore street interactions."
+    "Your choices will affect your social credit score, so choose wisely!"
+    
 
     python:
-        povname = renpy.input("What is your name?", length=32)
+        povname = renpy.input("Bfore we start, what is your name?", length=32)
         povname = povname.strip()
 
     # This shows a character sprite. A placeholder is used, but you can
     # replace it by adding a file named "eileen happy.png" to the images
     # directory.
 
+    
+
+    
+
+
+label first_chapter:
+    scene bg street
     show man talking at left
     show silvie body at right
 
@@ -49,13 +61,12 @@ label start:
     m "Why? You dont want to have fun?"
     show man body at left
 
+
     menu:
         "Intervene":
             jump intervene_route
         "Ignore":
             jump ignore_route
-
-
 
 label intervene_route:
     "+10 social credit score"
