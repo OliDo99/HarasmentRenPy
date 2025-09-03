@@ -66,12 +66,18 @@ label first_chapter:
         
         "Intervene":           
             python:
-                    player_score += 10 
+                player_score += 10 
             jump intervene_route
-        "Ignore":
-            jump ignore_route
+        "Pretend you know Silvie":
             python:
-                    player_score -= 10
+                player_score += 10 
+            jump silvie_route
+        "Ignore":
+            python:
+                player_score -= 10
+            jump ignore_route
+            
+                    
 
 label intervene_route:
     
@@ -87,10 +93,6 @@ label intervene_route:
             python:
                 player_score += 10 
             jump talk_route
-        "Pretend you know Silvie":
-            python:
-                player_score += 10 
-            jump silvie_route
         "Punch him":
             python:
                 player_score -= 10 
@@ -176,11 +178,11 @@ label second_chapter:
             python:
                 player_score -= 10 
             jump intervene_route2
-        "Explain OV":
+        "Explain it yourself":
             python:
                 player_score += 10 
             jump explain_route2
-        "Ignore":
+        "Observe":
             python:
                 player_score += 10 
             jump ignore_route2
@@ -219,7 +221,10 @@ label concerned_route2:
     show silvie body at right
     pov "Is everything alright here?"
     s "Yeah I was just showing this man how to use OV"
-    m "Sorry for bothering you, I don't know how this card worked and no one was willing to help so far"
+    m "Thank you, I don't know how this card worked and no one was willing to help so far"
+
+    scene bg black
+    centered "Calmly approaching a quetionable situation and checking up can be a good way to make sure everything is alright"
 
     jump third_chapter
 
@@ -229,6 +234,9 @@ label explain_route2:
     show silvie body at right
     pov "I can show you, you just tap it on that scanner"
     m "Thanks, you are a life saver"
+
+    scene bg black
+    centered "Offering help in a seemingly normal situation can be a good ay to make sure both parties are safe"
 
 
 
@@ -243,7 +251,7 @@ label third_chapter:
     show man body at left
     l "..."
     show man talking at left
-    m "Damn, don't ignore me! I'm just giving you a compliment!" 
+    m "Damn, don't ignore me! I'm giving you a compliment!" 
     show laura fuck off
 
     l "I’m not interested. Please leave me alone." 
