@@ -29,6 +29,8 @@ label start:
     python:
         povname = renpy.input("Before we start, what is your name?", length=32)
         povname = povname.strip()
+        if not povname:
+         povname = "You"
         player_score = 100
 
     # This shows a character sprite. A placeholder is used, but you can
