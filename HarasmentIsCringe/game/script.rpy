@@ -31,7 +31,7 @@ label start:
         povname = povname.strip()
         if not povname:
          povname = "You"
-        player_score = 100
+        player_score = 10
 
     # This shows a character sprite. A placeholder is used, but you can
     # replace it by adding a file named "eileen happy.png" to the images
@@ -273,8 +273,11 @@ label third_chapter:
             jump ignore_route3
 
 label embarrassing_route3:
-    pov "Mate, this isn't working. Try therapy next time."
-    m "Fuck you, man. All chicks are the same anyway"
+    pov "Hey man, maybe try and learn how to pick up chicks next time."
+    m "Fuck you, man. Why are you trying to barge in, huh? Walk along boy."
+
+    scene bg black
+    centered "Insulting the perpetrator only makes things worse. Don't try to make fun of him. Instead, try and help the girl"
     jump end_chapter
 
 label intervene_route3:
@@ -300,24 +303,50 @@ label intervene_route3:
     #Person A walks away while Person B talking to bystander 
 label ignore_route3:
     scene bg street
+    show laura body flip at right
+    l "Being a creep like that is not being nice"
     show man groping
+    m "Well you are asking for it in that outfit"
     show laura body flip at right
     l "Get away from me!"
+
+    scene bg black
+    centered "Ignoring a heated situation where someone is being harassed can lead to dangerous outcomes. If you can, try and step in to de-escalate the situation"
+
     jump end_chapter
 
 label calm_intervene_route3:
-    pov "This isn’t saying hi, it's harassment. Walk away, or I'll get security."
-    m "Tch. Whatever."
+    pov "This isn’t saying hi, it's harassment. Walk away, or I'll call the police."
+    m "Tsk. Whatever."
+
+    scene bg black
+    centered "Staying calm and informing authorities will scare the perpetrator away without putting the victim at risk"
+
     jump end_chapter
 
 label sarcastic_intervene_route3:
     pov "Oh wow, thanks for blessing us with your unsolicited opinion. Shall we share it with your mother?"
-    m "Whatever. You're so boring"
+    m "What did you just say? Are you asking for a fight?"
+    
+    scene bg black
+    centered "Sarcasm won't get you far. Instead, it will anger the agressor and put both of you and the victim at risk. People are unpredictable, play it safe."
+    
     jump end_chapter
 
     
 
 
 label end_chapter:
-    "The End"
+    scene bg black
+
+    if player_score >= 40:
+        $ performance = "Good"
+
+    elif player_score >= 20:
+        $ performance = "Normal"
+        
+    else:
+        $ performance = "Poor"
+
+    centered "Your final score is [player_score], that's a [performance] performance!"
     return
