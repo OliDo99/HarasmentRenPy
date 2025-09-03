@@ -6,7 +6,8 @@
 define s = Character("Silvie", color="#c8ffc8")
 define l = Character("Laura", color="#8e4efe")
 define m = Character("Boyle", color="#ff8818")
-define pov = Character("You", color="#28ff10")
+define pov = Character("[povname]", color="#28ff10")
+
 
 
 # The game starts here.
@@ -18,6 +19,10 @@ label start:
     # images directory to show it.
 
     scene bg street
+
+    python:
+        povname = renpy.input("What is your name?", length=32)
+        povname = povname.strip()
 
     # This shows a character sprite. A placeholder is used, but you can
     # replace it by adding a file named "eileen happy.png" to the images
