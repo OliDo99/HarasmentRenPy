@@ -29,7 +29,9 @@ label start:
     python:
         povname = renpy.input("Before we start, what is your name?", length=32)
         povname = povname.strip()
-        player_score = 0
+        if not povname:
+         povname = "You"
+        player_score = 100
 
     # This shows a character sprite. A placeholder is used, but you can
     # replace it by adding a file named "eileen happy.png" to the images
@@ -59,28 +61,39 @@ label first_chapter:
     m "Why? You dont want to have fun?"
     show man body at left
 
-
+    
     menu:
-        "Intervene":
+        
+        "Intervene":           
+            python:
+                    player_score += 10 
             jump intervene_route
         "Ignore":
             jump ignore_route
+            python:
+                    player_score -= 10
 
 label intervene_route:
-    "+10 social credit score"
+    
     scene bg street
     show man body
-
+    
     pov "Hey!"
     show man talking
     m "Mind your own business!"
     show man body 
     menu:
         "Talk to him":
+            python:
+                player_score += 10 
             jump talk_route
         "Pretend you know Silvie":
+            python:
+                player_score += 10 
             jump silvie_route
         "Punch him":
+            python:
+                player_score -= 10 
             jump fight_route
 
 label talk_route:
@@ -117,7 +130,6 @@ label fight_route:
     jump second_chapter
 
 label ignore_route:
-    "-10 social credit score"
     scene bg street night
     
     "You left"
@@ -126,7 +138,11 @@ label ignore_route:
     jump second_chapter
 
 label silvie_route:
-    scene bg street night
+    show man body at left
+    pov "Hey! There you are, I've been looking all over for you."
+    pov "Are you ready to go?"
+    s "uhhh..."
+    s "Yeah, thanks lets go"
     jump second_chapter
 
 
@@ -147,12 +163,20 @@ label second_chapter:
 
     menu:
         "Everything alright?":
-            jump concered_route2
+            python:
+                player_score += 10 
+            jump concerned_route2
         "Intervene":
+            python:
+                player_score -= 10 
             jump intervene_route2
         "Explain OV":
+            python:
+                player_score += 10 
             jump explain_route2
         "Ignore":
+            python:
+                player_score += 10 
             jump ignore_route2
 
 label intervene_route2:
@@ -162,7 +186,6 @@ label intervene_route2:
     show silvie answering at right
     s "What hey, I was just helping him"
     pov "Oh, sorry"
-    "-10 social credit score"
     jump third_chapter
 
 label ignore_route2:
@@ -179,7 +202,7 @@ label ignore_route2:
 label concerned_route2:
     scene bg train
     show man body at left
-    show Silvie
+    show silvie body at right
     pov "Is everything alright here?"
     s "Yeah I was just showing this man how to use OV"
 
@@ -215,23 +238,39 @@ label third_chapter:
     show man body
 
     menu:
+        "Make fun of him":
+            jump embarrassing_route3
         "Intervene":
+            python:
+                player_score += 10 
             jump intervene_route3
         "Ignore":
+            python:
+                player_score += 10 
             jump ignore_route3
+
+label embarrassing_route3:
+    pov "Mate, this isn't working. Try therapy next time."
+    m "Fuck you, man. All chicks are the same anyway"
+    jump end_chapter
 
 label intervene_route3:
     pov "Hey man, she's not interested!"
-    "+10 social credit"
     show man whatever
     m "Whatever. Can’t even say hi to people these days." 
 
     menu:
         "Calm approach":
+            python:
+                player_score += 10 
             jump calm_intervene_route3
         "Be sarcastic":
+            python:
+                player_score += 10 
             jump sarcastic_intervene_route3
         "Ignore":
+            python:
+                player_score -= 10 
             jump end_chapter
 
 
@@ -240,7 +279,7 @@ label ignore_route3:
     scene bg street
     show man groping
     show laura body flip at right
-    "boob squeeze"
+    l "Get away from me!"
     jump end_chapter
 
 label calm_intervene_route3:
@@ -250,7 +289,7 @@ label calm_intervene_route3:
 
 label sarcastic_intervene_route3:
     pov "Oh wow, thanks for blessing us with your unsolicited opinion. Shall we share it with your mother?"
-    m "You chicks are all the same. Whatever."
+    m "Whatever. You're so boring"
     jump end_chapter
 
     
