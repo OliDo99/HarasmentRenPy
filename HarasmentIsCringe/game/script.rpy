@@ -135,6 +135,9 @@ label ignore_route:
     "You left"
     "You never saw her again"
 
+    scene bg black
+    centered "If you see a questionable situation, it's always better to make sure everything is alright, rather than ignore it. Better safe than sorry"
+
     jump second_chapter
 
 label silvie_route:
@@ -143,6 +146,9 @@ label silvie_route:
     pov "Are you ready to go?"
     s "uhhh..."
     s "Yeah, thanks lets go"
+
+    scene bg black
+    centered "Pretending to know the person being harassed can be a good and subtle way to make sure they are feeling safe without alerting the perpetrator"
     jump second_chapter
 
 
@@ -182,20 +188,28 @@ label second_chapter:
 label intervene_route2:
     pov "Hey! Leave her alone!"
     show man asking at left
-    m "What?"
+    m "What? I was just asking for help. I got this card yesterday and I don't know how it works"
     show silvie answering at right
-    s "What hey, I was just helping him"
-    pov "Oh, sorry"
+    s "I was just showing him how to use it, I'm fine"
+    pov "Oh, sorry for interrupting"
+
+    scene bg black
+    centered "Not all situations are dangerous, try to take a subtle approach to measure the situation before trying to intervene"
+
     jump third_chapter
 
 label ignore_route2:
     scene bg train
     show man body at left
     show silvie answering at right
-    s "You press it here like this"
+    "You decide to do nothing and oberve the situation"
+    s "You press it here like this until you hear a sound"
     show silvie body at right
     show man asking at left
     m "Thanks, you are a life saver"
+
+    scene bg black
+    centered "Sometimes, taking a step back and judging the situation is better than rushing in"
 
     jump third_chapter
 
@@ -205,6 +219,7 @@ label concerned_route2:
     show silvie body at right
     pov "Is everything alright here?"
     s "Yeah I was just showing this man how to use OV"
+    m "Sorry for bothering you, I don't know how this card worked and no one was willing to help so far"
 
     jump third_chapter
 
