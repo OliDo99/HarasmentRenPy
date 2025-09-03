@@ -86,19 +86,23 @@ label intervene_route:
 label talk_route:
     pov"Could you please leave her alone?"
     show man talking
-    m"What??"
+    m"What? Why?"
     show man body
-    pov "You shouldnt be harassing people like that!"
+    pov "Forcing yourself on someone is harassment and it's not okay"
     show man talking
-    m "What?? I didn't know that"
+    m "I didn't mean it like that, but fine I'll leave"
+    
+    scene bg black
+    centered "You did the right thing, calmly explaining the situation without escalating is always the best approach"
+
 
     jump second_chapter
 
 label fight_route:
-    pov "Take this!"
+    pov "Hey back off man! Take this!"
     "You punch him in the face"
     show man grabbing
-    m "Oof!"
+    m "Ouch! You bastard..."
     show man knife
     "He pulls out a knife"
     
@@ -106,6 +110,10 @@ label fight_route:
     show cop body at left
     cop "Drop the knife!"
     "The cops arrest both of you"
+
+    scene bg black
+    centered "Violence is never the answer, you should always try to de-escalate the situation first"
+    
     jump second_chapter
 
 label ignore_route:
