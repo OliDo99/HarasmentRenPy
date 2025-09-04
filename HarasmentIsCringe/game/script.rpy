@@ -49,28 +49,19 @@ label first_chapter:
 
     menu:
         "Intervene": 
-            python:
-                player_score += 10
             jump intervene_route
         "Pretend you know her": 
-            python:
-                player_score += 10
+
             jump silvie_route
         "Do nothing": 
-            python:
-                player_score -= 10
             jump ignore_route
 
 label intervene_route:
 
     menu:
         "Talk to him":
-            python:
-                player_score += 10
             jump talk_route
         "Punch him": 
-            python:
-                player_score -= 10
             jump fight_route
 
 label talk_route:
@@ -175,20 +166,12 @@ label second_chapter:
 
     menu:
         "Ask if everything is okay":
-            python:
-                player_score += 10
             jump concerned_route2
         "Tell him to leave her alone": 
-            python:
-                player_score -= 10
             jump intervene_route2
         "Help him yourself":
-            python:
-                player_score += 10
             jump explain_route2
         "Watch from a distance": 
-            python:
-                player_score += 5 
             jump ignore_route2
 
 label intervene_route2:
@@ -277,16 +260,10 @@ label third_chapter:
 
     menu:
         "Make fun of him":
-            python:
-                player_score += 10
             jump sarcastic_intervene_route3
         "Confront him directly":
-            python:
-                player_score += 10
             jump intervene_route3
         "Ignore it":
-            python:
-                player_score -= 10
             jump ignore_route3
 
 label sarcastic_intervene_route3: 
@@ -305,12 +282,8 @@ label intervene_route3:
 
     menu:
         "Check on her":
-            python:
-                player_score += 10
             jump check_on_her_route3
         "Say nothing else":
-            python:
-                player_score += 5
             jump end_chapter
 
 label check_on_her_route3:
@@ -344,15 +317,5 @@ label ignore_route3:
 label end_chapter:
     scene bg black
 
-    if player_score >= 40:
-        $ performance = "an excellent"
-
-    elif player_score >= 20:
-        $ performance = "a solid"
-    
-    else:
-        $ performance = "a poor"
-
-    centered "Your final score is [player_score]. That was [performance] performance!"
     centered "Thanks for playing. Remember, being an active bystander makes our communities safer. 👍"
     return
