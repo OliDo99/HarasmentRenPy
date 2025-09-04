@@ -11,7 +11,6 @@ define pov = Character("[povname]", color="#28ff10")
 label start:
 
     scene bg classroom
-
     
     "Street harassment. It's an ugly reality."
     "We see it, we hear about it, but do we know what to do when we're face-to-face with it?"
@@ -48,21 +47,17 @@ label first_chapter:
     show man body at left
 
     menu:
-        "Intervene": 
-            jump intervene_route
+        "Talk to him":
+            jump talk_route
+        "Punch him": 
+            jump fight_route
         "Pretend you know her": 
 
             jump silvie_route
         "Do nothing": 
             jump ignore_route
 
-label intervene_route:
 
-    menu:
-        "Talk to him":
-            jump talk_route
-        "Punch him": 
-            jump fight_route
 
 label talk_route:
     pov "Hey man, I think she'd like to be left alone." 
@@ -80,7 +75,9 @@ label talk_route:
 
 label fight_route:
     pov "Back off! Or else—"
-
+    show man talking
+    m "Or else what?"
+    show man body
     "You swing and punch him."
     hide man body
     show man grabbing
@@ -167,11 +164,11 @@ label second_chapter:
     menu:
         "Ask if everything is okay":
             jump concerned_route2
-        "Tell him to leave her alone": 
+        "Tell him to leave her alone":
             jump intervene_route2
         "Help him yourself":
             jump explain_route2
-        "Watch from a distance": 
+        "Observe": 
             jump ignore_route2
 
 label intervene_route2:
