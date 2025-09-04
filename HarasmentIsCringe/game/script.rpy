@@ -1,9 +1,4 @@
-﻿# The script of the game goes in this file.
-
-# Declare characters used by this game. The color argument colorizes the
-# name of the character.
-
-define s = Character("Silvie", color="#c8ffc8")
+﻿define s = Character("Silvie", color="#c8ffc8")
 define l = Character("Laura", color="#8e4efe")
 define m = Character("Boyle", color="#ff8818")
 define cop = Character("Police", color="#ff0000c1")
@@ -11,31 +6,24 @@ define pov = Character("[povname]", color="#28ff10")
 
 
 
-# The game starts here.
+
 
 label start:
 
-    # Show a background. This uses a placeholder by default, but you can
-    # file (named either "bg room.png" or "bg room.jpg") to the
-    # images directory to show it.
-
     scene bg classroom
 
-    "Welcome to our Pressure Cooker game about street harassment!"
-    "In this game, you will be presented with different scenarios where you can choose to either to intervene or ignore street interactions."
-    "Your choices will affect your social credit score, so choose wisely!"
     
+    "Street harassment. It's an ugly reality."
+    "We see it, we hear about it, but do we know what to do when we're face-to-face with it?"
+    "In this game, you'll be a bystander. Your choices matter. Let's see how you handle the pressure."
 
     python:
-        povname = renpy.input("Before we start, what is your name?", length=32)
+        povname = renpy.input("First, what should we call you?", length=32)
         povname = povname.strip()
         if not povname:
-         povname = "You"
-        player_score = 10
+            povname = "You"
+        player_score = 10 
 
-    # This shows a character sprite. A placeholder is used, but you can
-    # replace it by adding a file named "eileen happy.png" to the images
-    # directory.
 
 
 label first_chapter:
@@ -43,117 +31,131 @@ label first_chapter:
     show man talking at left
     show silvie body at right
 
-    # These display lines of dialogue.
-    m "Hello sweetheart, you look so good today!"
+    m "Hey, gorgeous. You're looking amazing today."
     show man body at left
     show silvie anoyed at right
-    s "Sorry?"
+    s "Sorry... do I know you?" 
     show silvie body at right
     show man talking at left
-    m "Dont be like that baby"
-
-    m "Come on, just give me a chance"
+    m "Not yet. But you could."
+    m "Come on, give me a smile. It can't be that bad."
     show man body at left
     show silvie anoyed at right
-    s "Leave me alone!"
+    s "Please, just leave me alone." 
     show silvie body at right
     show man talking at left
-    m "Why? You dont want to have fun?"
+    m "Whoa, whoa, what's the attitude for? I was just giving you a compliment." 
     show man body at left
 
-    
     menu:
-        
-        "Intervene":           
+        "Intervine": 
             python:
-                player_score += 10 
+                player_score += 10
             jump intervene_route
-        "Pretend you know Silvie":
+        "Pretend you know her": 
             python:
-                player_score += 10 
+                player_score += 10
             jump silvie_route
-        "Ignore":
+        "Do nothing": 
             python:
                 player_score -= 10
             jump ignore_route
-            
-                    
 
 label intervene_route:
-    
-    scene bg street
-    show man body
-    
-    pov "Hey!"
-    show man talking
-    m "Mind your own business!"
-    show man body 
+
     menu:
         "Talk to him":
             python:
-                player_score += 10 
+                player_score += 10
             jump talk_route
-        "Punch him":
+        "Punch him": 
             python:
-                player_score -= 10 
+                player_score -= 10
             jump fight_route
 
 label talk_route:
-    pov"Could you please leave her alone?"
+    pov "Hey man, I think she'd like to be left alone." 
     show man talking
-    m"What? Why?"
+    m "I'm just talking to her. What's it to you?"
     show man body
-    pov "Forcing yourself on someone is harassment and it's not okay"
-    show man talking
-    m "I didn't mean it like that, but fine I'll leave"
+    pov "She looks uncomfortable. Just let it go, alright?"
+    show man whatever
+    m "Tch... whatever. Her loss."
     
     scene bg black
-    centered "You did the right thing, calmly explaining the situation without escalating is always the best approach"
-
-
+    centered "Good choice. De-escalating is often the safest and most effective strategy. You focused on the behavior, not attacking him personally."
     jump second_chapter
 
+
 label fight_route:
-    pov "Hey back off man! Take this!"
-    "You punch him in the face"
+    pov "Back off! Or else—"
+
+    "You swing and punch him."
+    hide man body
     show man grabbing
-    m "Ouch! You bastard..."
+
+    m "What the hell?!"
+
     show man knife
+    show silvie scared 
+
     "He pulls out a knife"
-    
-    m "Now you've done it!"
+
+
+    m "You’re dead, asshole!"
+
     show cop body at left
-    cop "Drop the knife!"
+    "A patrol car was nearby and the police arrive quickly."
+    show cop talking at left
+    cop "Police! Break it up, both of you!"
+    show cop yelling at left
+    cop "Drop the knife now!"
+    
+
     "The cops arrest both of you"
+    hide man
+    show cop talking
+    cop"Are you okay, ma'am?"
+    show silvie answering
+    s "Y-yeah... thanks to you."
+
 
     scene bg black
-    centered "Violence is never the answer, you should always try to de-escalate the situation first"
+
+    centered "Violence is never the answer, you should always try to de-escalate the situation first."
+
+
 
     jump second_chapter
 
 label ignore_route:
     scene bg street night
-    
-    "You left"
-    "You never saw her again"
+    "You keep walking, trying not to make eye contact."
+    "The sound of their voices fades behind you."
+    "You'll never know how it ended."
+    "But you never saw her again."
 
     scene bg black
-    centered "If you see a questionable situation, it's always better to make sure everything is alright, rather than ignore it. Better safe than sorry"
-
+    centered "Ignoring the situation is a choice—one that leaves the victim completely alone. Even a small distraction can help. A bystander's presence has power."
     jump second_chapter
 
 label silvie_route:
+    
     show man body at left
     show silvie body at right
-    pov "Hey! There you are, I've been looking all over for you."
-    pov "Are you ready to go?"
-    show silvie answering at right
-    s "uhhh..."
-    s "Yeah, thanks lets go"
+    pov "Hey, Silvie! There you are, I was waiting for you." 
+    pov "Sorry I'm late. You ready to go?"
+    show silvie anoyed 
+    s "Oh, uh..." 
+    show silvie answering
+    s "Yeah! Totally. Let's go."
+    "She walks over to you, leaving the man standing there, confused."
 
     scene bg black
-    centered "Pretending to know the person being harassed can be a good and subtle way to make sure they are feeling safe without alerting the perpetrator"
+    centered "Excellent choice. Creating a distraction by pretending to know the person is a safe and subtle way to remove them from a bad situation."
     jump second_chapter
+
+
 
 
 label second_chapter:
@@ -161,194 +163,196 @@ label second_chapter:
     show man asking at left
     show silvie body at right
 
-    # These display lines of dialogue.
-    m "Hey, can you show me how to use the OV chipkaart?"
+   
+    m "Excuse me? Sorry, I'm a bit lost. How do you use this... OV-chipkaart?" 
     show man body at left
     show silvie answering at right
-    s "Oh you just scan it when you get on a bus or train"
+    s "Oh, sure! You just have to tap it on the scanner when you get on or off."
     show silvie body at right
     show man talking at left
-    m "Could you show me?"
+    m "Ah, I see. Could you maybe show me? I don't want to mess it up." 
     show man body at left
 
     menu:
-        "Everything alright?":
+        "Ask if everything is okay":
             python:
-                player_score += 10 
+                player_score += 10
             jump concerned_route2
-        "Intervene":
+        "Tell him to leave her alone": 
             python:
-                player_score -= 10 
+                player_score -= 10
             jump intervene_route2
-        "Explain it yourself":
+        "Offer to help him yourself":
             python:
-                player_score += 10 
+                player_score += 10
             jump explain_route2
-        "Observe":
+        "Watch from a distance": 
             python:
-                player_score += 10 
+                player_score += 5 
             jump ignore_route2
 
 label intervene_route2:
-    pov "Hey! Leave her alone!"
+    pov "Hey! Back off, man. She's busy."
     show man asking at left
-    m "What? I was just asking for help. I got this card yesterday and I don't know how it works"
-    show silvie answering at right
-    s "I was just showing him how to use it, I'm fine"
-    pov "Oh, sorry for interrupting"
+    m "What? I was just asking for help. I'm new here."
+    show silvie anoyed at right
+    s "Im sorry? He was just asking how to use his card. I was helping him."
+    pov "Oh."
+    pov"My bad. Sorry about that."
 
     scene bg black
-    centered "Not all situations are dangerous, try to take a subtle approach to measure the situation before trying to intervene"
-
+    centered "Jumping to conclusions can create awkward or even hostile situations. It's always best to assess the situation before intervening aggressively."
     jump third_chapter
 
-label ignore_route2:
+label ignore_route2: 
     scene bg train
     show man body at left
     show silvie answering at right
-    "You decide to do nothing and oberve the situation"
-    s "You press it here like this until you hear a sound"
+    "You decide to hang back for a moment and just watch."
+   
+    s "See? You just tap it there until it beeps."
     show silvie body at right
     show man asking at left
-    m "Thanks, you are a life saver"
+    m "Thank you so much! You're a lifesaver."
 
     scene bg black
-    centered "Sometimes, taking a step back and judging the situation is better than rushing in"
-
+    centered "Good call. Sometimes, observing for a moment is the smartest move. You correctly judged that this wasn't a threat."
     jump third_chapter
 
 label concerned_route2:
+    
+    pov "Excuse me, is everything alright here?" 
+    show silvie answering
+    s "Oh, yeah! I was just showing him how the OV-chipkaart works."
+    show silvie body
+    show man asking 
+    m "This is my first time in the Netherlands. It's a bit confusing!"
+    show man body
+    pov "Oh, yeah, It get that."
+    pov "Well, welcome to the Netherlands! Enjoy your trip."
+    show man asking 
+    m "Thanks"
+    "With a final nod, you turn and get on your bus."
+
+    scene bg black
+    centered "A perfect, low-key way to check in. You showed concern without making accusations, making sure everyone was comfortable."
+    jump third_chapter
+
+label explain_route2: # needs work? I feel like this one is a bit off
     scene bg train
     show man body at left
     show silvie body at right
-    pov "Is everything alright here?"
-    s "Yeah I was just showing this man how to use OV"
-    m "Thank you, I don't know how this card worked and no one was willing to help so far"
-
-    scene bg black
-    centered "Calmly approaching a quetionable situation and checking up can be a good way to make sure everything is alright"
-
-    jump third_chapter
-
-label explain_route2:
-    scene bg train
+    pov "Hey, I can help with that. You just tap your card right on this scanner here."
     show man asking at left
+    m "Oh, thanks?"
+    show man body at left
+    show silvie anoyed at right
+    s "I was just explaining that."
     show silvie body at right
-    pov "I can show you, you just tap it on that scanner"
-    m "Thanks, you are a life saver"
+    pov "Sorry, just wanted to help."
+    pov "Good luck with your trip!" 
 
     scene bg black
-    centered "Offering help in a seemingly normal situation can be a good ay to make sure both parties are safe"
-
+    centered "Offering help is another great way to subtly enter the situation and gauge the vibe. Well done."
+    jump third_chapter
 
 
 label third_chapter:
     scene bg street
-
-#Person A walking past Person B 
     show laura body at right
     show man talking at left
 
-    m "Hey girl! Lookin' good in that dress!" 
+    m "Damn, girl. That dress is something else."
     show man body at left
-    l "..."
+    l "..." 
     show man talking at left
-    m "Damn, don't ignore me! I'm giving you a compliment!" 
+    m "What, you're too good to say thank you? I'm trying to be nice!" 
+    show man body at left
     show laura fuck off
-
-    l "I’m not interested. Please leave me alone." 
+    l "I'm not interested. Go away."
     show laura body flip
-
-    m "Wow, calm down! No need to be such a bitch about it. I was just being nice." 
+    show man talking at left
+    m "Fine, whatever. Stuck-up bitch." 
     show man body
 
     menu:
         "Make fun of him":
-            jump embarrassing_route3
-        "Intervene":
             python:
-                player_score += 10 
+                player_score += 10
+            jump sarcastic_intervene_route3
+        "Confront him directly":
+            python:
+                player_score += 10
             jump intervene_route3
-        "Ignore":
+        "Ignore it":
             python:
-                player_score += 10 
+                player_score -= 10
             jump ignore_route3
 
-label embarrassing_route3:
-    pov "Hey man, maybe try and learn how to pick up chicks next time."
-    m "Fuck you, man. Why are you trying to barge in, huh? Walk along boy."
+label sarcastic_intervene_route3: 
+    pov "Oh wow, thanks for blessing us with your unsolicited opinion. Shall we share it with your mother?" 
+    m "What did you just say? Are you asking for a fight?" 
 
-    scene bg black
-    centered "Insulting the perpetrator only makes things worse. Don't try to make fun of him. Instead, try and help the girl"
+    scene bg black centered "Sarcasm won't get you far. Instead, it will anger the agressor and put both of you and the victim at risk. People are unpredictable, play it safe." 
     jump end_chapter
+
 
 label intervene_route3:
-    pov "Hey man, she's not interested!"
+    pov "Hey, dude. She said she's not interested. Time to go."
     show man whatever
-    m "Whatever. Can’t even say hi to people these days." 
+    m "Whatever, man. It's a free country."
+    "He glares at you for a second before walking off, muttering under his breath."
 
     menu:
-        "Calm approach":
+        "Check on her":
             python:
-                player_score += 10 
-            jump calm_intervene_route3
-        "Be sarcastic":
+                player_score += 10
+            jump check_on_her_route3
+        "Say nothing else":
             python:
-                player_score += 10 
-            jump sarcastic_intervene_route3
-        "Ignore":
-            python:
-                player_score -= 10 
+                player_score += 5
             jump end_chapter
 
+label check_on_her_route3:
+    pov "You okay?"
+    l "Yeah. Thanks for that. What a creep."
+    pov "No problem. Take care."
 
-    #Person A walks away while Person B talking to bystander 
+    scene bg black
+    centered "Stepping in was the right thing to do, and checking on her afterward showed you cared about her well-being. That's how you support someone."
+    jump end_chapter
+
 label ignore_route3:
-    scene bg street
+
+    "You walk on, pretending you didn't hear anything."
+    
+    show laura talking
+    l "Don't you call me that!"
     show laura body flip at right
-    l "Being a creep like that is not being nice"
     show man groping
-    m "Well you are asking for it in that outfit"
-    show laura body flip at right
-    l "Get away from me!"
+    m "You're asking for it, dressed like that!" 
+    "His voice gets louder and more aggressive. He takes a step closer to her."
+    
+    show laura fuck off 
+    l "Get away from me you creep."
 
     scene bg black
-    centered "Ignoring a heated situation where someone is being harassed can lead to dangerous outcomes. If you can, try and step in to de-escalate the situation"
-
+    centered "When harassment escalates, ignoring it can leave the victim in a dangerous situation. Your presence alone could have been enough to deter him."
     jump end_chapter
-
-label calm_intervene_route3:
-    pov "This isn’t saying hi, it's harassment. Walk away, or I'll call the police."
-    m "Tsk. Whatever."
-
-    scene bg black
-    centered "Staying calm and informing authorities will scare the perpetrator away without putting the victim at risk"
-
-    jump end_chapter
-
-label sarcastic_intervene_route3:
-    pov "Oh wow, thanks for blessing us with your unsolicited opinion. Shall we share it with your mother?"
-    m "What did you just say? Are you asking for a fight?"
-    
-    scene bg black
-    centered "Sarcasm won't get you far. Instead, it will anger the agressor and put both of you and the victim at risk. People are unpredictable, play it safe."
-    
-    jump end_chapter
-
-    
 
 
 label end_chapter:
     scene bg black
 
     if player_score >= 40:
-        $ performance = "Good"
+        $ performance = "an excellent"
 
     elif player_score >= 20:
-        $ performance = "Normal"
-        
+        $ performance = "a solid"
+    
     else:
-        $ performance = "Poor"
+        $ performance = "a poor"
 
-    centered "Your final score is [player_score], that's a [performance] performance!"
+    centered "Your final score is [player_score]. That was [performance] performance!"
+    centered "Thanks for playing. Remember, being an active bystander makes our communities safer. 👍"
     return
