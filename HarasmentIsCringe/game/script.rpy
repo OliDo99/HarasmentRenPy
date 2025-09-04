@@ -74,7 +74,7 @@ label talk_route:
     m "Tch... whatever. Her loss."
     
     scene bg black
-    centered "Good choice. De-escalating is often the safest and most effective strategy. You focused on the behavior, not attacking him personally."
+    centered "De-escalating is often the safest and most effective strategy. You focused on the behavior, not attacking him personally."
     jump second_chapter
 
 
@@ -143,7 +143,7 @@ label silvie_route:
     "She walks over to you, leaving the man standing there, confused."
 
     scene bg black
-    centered "Excellent choice. Creating a distraction by pretending to know the person is a safe and subtle way to remove them from a bad situation."
+    centered "Creating a distraction by pretending to know the person is a safe and subtle way to remove them from a bad situation."
     jump second_chapter
 
 
@@ -199,7 +199,7 @@ label ignore_route2:
     m "Thank you so much! You're a lifesaver."
 
     scene bg black
-    centered "Good call. Sometimes, observing for a moment is the smartest move. You correctly judged that this wasn't a threat."
+    centered "Sometimes, observing for a moment is the smartest move. Not all situation are dangerous."
     jump third_chapter
 
 label concerned_route2:
@@ -218,7 +218,7 @@ label concerned_route2:
     "With a final nod, you turn and get on your bus."
 
     scene bg black
-    centered "A perfect, low-key way to check in. You showed concern without making accusations, making sure everyone was comfortable."
+    centered "Making sure everything is okay without making accusations or jumping to conclusions is a good way to check the situation."
     jump third_chapter
 
 label explain_route2: # needs work? I feel like this one is a bit off
@@ -236,7 +236,7 @@ label explain_route2: # needs work? I feel like this one is a bit off
     pov "Good luck with your trip!" 
 
     scene bg black
-    centered "Offering help is another great way to subtly enter the situation and gauge the vibe. Well done."
+    centered "Offering help is a normal way to subtly enter the situation and gauge the vibe."
     jump third_chapter
 
 
@@ -270,7 +270,8 @@ label sarcastic_intervene_route3:
     pov "Oh wow, thanks for blessing us with your unsolicited opinion. Shall we share it with your mother?" 
     m "What did you just say? Are you asking for a fight?" 
 
-    scene bg black centered "Sarcasm won't get you far. Instead, it will anger the agressor and put both of you and the victim at risk. People are unpredictable, play it safe." 
+    scene bg black 
+    centered "Sarcasm won't get you far. Instead, it will anger the agressor and put both of you and the victim at risk. People are unpredictable, play it safe." 
     jump end_chapter
 
 
@@ -280,19 +281,12 @@ label intervene_route3:
     m "Whatever, man. It's a free country."
     "He glares at you for a second before walking off, muttering under his breath."
 
-    menu:
-        "Check on her":
-            jump check_on_her_route3
-        "Say nothing else":
-            jump end_chapter
-
-label check_on_her_route3:
     pov "You okay?"
     l "Yeah. Thanks for that. What a creep."
     pov "No problem. Take care."
 
     scene bg black
-    centered "Stepping in was the right thing to do, and checking on her afterward showed you cared about her well-being. That's how you support someone."
+    centered "Stepping in and checking up was the right thing to do. That's how you support someone."
     jump end_chapter
 
 label ignore_route3:
@@ -310,12 +304,12 @@ label ignore_route3:
     l "Get away from me you creep."
 
     scene bg black
-    centered "When harassment escalates, ignoring it can leave the victim in a dangerous situation. Your presence alone could have been enough to deter him."
+    centered "When harassment escalates, ignoring it can leave the victim in a dangerous situation. Your presence alone could be enough to deter him."
     jump end_chapter
 
 
 label end_chapter:
-    scene bg black
+    scene bg classroom
 
-    centered "Thanks for playing. Remember, being an active bystander makes our communities safer. 👍"
+    "This is the end of the game. Be sure to try out the different choices and their conequences."
     return
