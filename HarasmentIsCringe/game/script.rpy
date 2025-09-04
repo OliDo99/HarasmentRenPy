@@ -31,7 +31,6 @@ label start:
         povname = povname.strip()
         if not povname:
          povname = "You"
-        player_score = 10
 
     # This shows a character sprite. A placeholder is used, but you can
     # replace it by adding a file named "eileen happy.png" to the images
@@ -65,16 +64,10 @@ label first_chapter:
     menu:
         
         "Intervene":           
-            python:
-                player_score += 10 
             jump intervene_route
         "Pretend you know Silvie":
-            python:
-                player_score += 10 
             jump silvie_route
         "Ignore":
-            python:
-                player_score -= 10
             jump ignore_route
             
                     
@@ -90,12 +83,8 @@ label intervene_route:
     show man body 
     menu:
         "Talk to him":
-            python:
-                player_score += 10 
             jump talk_route
-        "Punch him":
-            python:
-                player_score -= 10 
+        "Punch him": 
             jump fight_route
 
 label talk_route:
@@ -171,20 +160,12 @@ label second_chapter:
 
     menu:
         "Everything alright?":
-            python:
-                player_score += 10 
             jump concerned_route2
         "Intervene":
-            python:
-                player_score -= 10 
             jump intervene_route2
         "Explain it yourself":
-            python:
-                player_score += 10 
             jump explain_route2
         "Observe":
-            python:
-                player_score += 10 
             jump ignore_route2
 
 label intervene_route2:
@@ -264,12 +245,8 @@ label third_chapter:
         "Make fun of him":
             jump embarrassing_route3
         "Intervene":
-            python:
-                player_score += 10 
             jump intervene_route3
         "Ignore":
-            python:
-                player_score += 10 
             jump ignore_route3
 
 label embarrassing_route3:
@@ -287,16 +264,10 @@ label intervene_route3:
 
     menu:
         "Calm approach":
-            python:
-                player_score += 10 
             jump calm_intervene_route3
         "Be sarcastic":
-            python:
-                player_score += 10 
             jump sarcastic_intervene_route3
         "Ignore":
-            python:
-                player_score -= 10 
             jump end_chapter
 
 
@@ -337,16 +308,7 @@ label sarcastic_intervene_route3:
 
 
 label end_chapter:
-    scene bg black
+    scene bg classroom
 
-    if player_score >= 40:
-        $ performance = "Good"
-
-    elif player_score >= 20:
-        $ performance = "Normal"
-        
-    else:
-        $ performance = "Poor"
-
-    centered "Your final score is [player_score], that's a [performance] performance!"
+    "This is the end of the game, try out different choices to see how they affect the scenario's!"
     return
