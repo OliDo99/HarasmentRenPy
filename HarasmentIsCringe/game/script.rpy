@@ -179,7 +179,7 @@ label intervene_route2:
     show man asking at left
     m "What? I was just asking for help. I'm new here."
     show silvie anoyed at right
-    s "Im sorry? He was just asking how to use his card. I was helping him."
+    s "I'm sorry? He was just asking how to use his card. I was helping him."
     pov "Oh."
     pov"My bad. Sorry about that."
 
@@ -218,7 +218,7 @@ label concerned_route2:
     "With a final nod, you turn and get on your bus."
 
     scene bg black
-    centered "A perfect, low-key way to check in. You showed concern without making accusations, making sure everyone was comfortable."
+    centered "A perfect, way to check in. You showed concern without making accusations, making sure everyone was comfortable."
     jump third_chapter
 
 label explain_route2: # needs work? I feel like this one is a bit off
@@ -236,7 +236,7 @@ label explain_route2: # needs work? I feel like this one is a bit off
     pov "Good luck with your trip!" 
 
     scene bg black
-    centered "Offering help is another great way to subtly enter the situation and gauge the vibe. Well done."
+    centered "Offering help is another great way to subtly enter the situation and gauge the vibe."
     jump third_chapter
 
 
@@ -270,7 +270,8 @@ label sarcastic_intervene_route3:
     pov "Oh wow, thanks for blessing us with your unsolicited opinion. Shall we share it with your mother?" 
     m "What did you just say? Are you asking for a fight?" 
 
-    scene bg black centered "Sarcasm won't get you far. Instead, it will anger the agressor and put both of you and the victim at risk. People are unpredictable, play it safe." 
+    scene bg black 
+    centered "Sarcasm won't get you far. Instead, it will anger the agressor and put both of you and the victim at risk. People are unpredictable, play it safe." 
     jump end_chapter
 
 
