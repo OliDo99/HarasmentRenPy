@@ -15,7 +15,7 @@ label start:
     
     "Street harassment. It's an ugly reality."
     "We see it, we hear about it, but do we know what to do when we're face-to-face with it?"
-    "In this game, you'll be a bystander. Your choices matter. Let's see how you handle the pressure."
+    "In this game, you'll be a bystander. Your choices matter. Let's see how you handle the scenarios."
 
     python:
         povname = renpy.input("First, what should we call you?", length=32)
@@ -31,7 +31,7 @@ label first_chapter:
     show man talking at left
     show silvie body at right
 
-    m "Hey, gorgeous. You're looking amazing today."
+    m "Hey, baby. You're looking amazing today."
     show man body at left
     show silvie anoyed at right
     s "Sorry... do I know you?" 
@@ -48,7 +48,7 @@ label first_chapter:
     show man body at left
 
     menu:
-        "Intervine": 
+        "Intervene": 
             python:
                 player_score += 10
             jump intervene_route
@@ -182,7 +182,7 @@ label second_chapter:
             python:
                 player_score -= 10
             jump intervene_route2
-        "Offer to help him yourself":
+        "Help him yourself":
             python:
                 player_score += 10
             jump explain_route2
